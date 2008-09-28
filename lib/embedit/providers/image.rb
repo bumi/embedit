@@ -9,8 +9,9 @@ module Embedit
     end
     
     def html(options = {})
+      attributes = options.collect {|k,v| "#{k}=\"#{v}\" "}.join(" ")
       %{
-        <a href="#{@url}"><img src="#{@url}" #{options.collect {|k,v| "#{k}=\"#{v}\"}.join(" ")}/></a>
+        <a href="#{@url}"><img src="#{@url}" #{attributes}/></a>
       } 
     end
     

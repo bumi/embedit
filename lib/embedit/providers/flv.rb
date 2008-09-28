@@ -1,11 +1,12 @@
 module Embedit
   
-  class Player
+  class Flv
     
     attr_reader :title, :url, :format
     
     def initialize(url)
       @url = url
+      @format = "video"
     end
     
     def html(options = {})
@@ -25,7 +26,7 @@ module Embedit
     end
     
     def self.match(url)
-      url.match(/(.+\.(gif|jpg|png)$)/)
+      url.match(/(.+\.flv$)/)
     end
   end
   

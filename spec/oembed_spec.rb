@@ -3,23 +3,19 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "Vimeo oEmbed tests" do
     
   it "should properly validate a valid Vimeo url" do
-    media = Embedit::Media.new('http://www.vimeo.com/1263763').valid?
-    media.should == true
+    Embedit::Media.new('http://www.vimeo.com/1263763').should be_valid
   end
   
   it "should show this videos title as 'Matt Week - Day One Time Lapse'" do
-    media = Embedit::Media.new('http://www.vimeo.com/1263763').title
-    media.should == 'Matt Week - Day One Time Lapse'
+    Embedit::Media.new('http://www.vimeo.com/1263763').title.should eql('Matt Week - Day One Time Lapse')
   end
   
   it "should show the format as video" do
-    media = Embedit::Media.new('http://www.vimeo.com/1263763').format
-    media.should == 'video'   
+    Embedit::Media.new('http://www.vimeo.com/1263763').format.should eql('video')
   end
   
   it "should validate an invalid (with only numbers) Vimeo url" do
-    media = Embedit::Media.new('http://www.vimeo.com/126007722').valid?
-    media.should == false
+    Embedit::Media.new('http://www.vimeo.com/126007722').should_not be_valid
   end
   
 end
@@ -27,13 +23,11 @@ end
 describe "Flickr oEmbed tests" do
   
   it "should validate a valid Flickr url" do
-    media = Embedit::Media.new('http://www.flickr.com/photos/asianmack/2781811902/in/set-72157606856535809/').valid?
-    media.should == true
+    Embedit::Media.new('http://www.flickr.com/photos/asianmack/2781811902/in/set-72157606856535809/').should be_valid
   end
   
   it "should show this pictures title as 'Logan Square" do
-    media = Embedit::Media.new('http://www.flickr.com/photos/asianmack/2781811902/in/set-72157606856535809/').title
-    media.should == 'Logan Square'
+    media = Embedit::Media.new('http://www.flickr.com/photos/asianmack/2781811902/in/set-72157606856535809/').title.should eql('Logan Square')
   end
   
   it "should show the format as photo" do
@@ -42,8 +36,7 @@ describe "Flickr oEmbed tests" do
   end
   
   it "should validate an invalid Flickr url" do
-    media = Embedit::Media.new('http://www.flickr.com/photos/banuelos_ismael/280428728023/').valid?
-    media.should == false
+    Embedit::Media.new('http://www.flickr.com/photos/banuelos_ismael/280428728023/').should_not be_valid
   end
   
 end
@@ -51,8 +44,7 @@ end
 describe "Viddler oEmbed tests" do
   
   it "should validate a valid Viddler url" do
-    media = Embedit::Media.new('http://www.viddler.com/explore/winelibrarytv/videos/635/').valid?
-    media.should == true
+    Embedit::Media.new('http://www.viddler.com/explore/winelibrarytv/videos/635/').should be_valid
   end
 
   it "should show this videos title as 'episode526'" do

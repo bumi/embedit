@@ -5,7 +5,7 @@ module Embedit
     attr_reader :title, :url, :format, :html
     
     # require all providers and collect the names
-    @@list = Dir["providers/*.rb"].collect {|file| require(file); file.classify.constantize }
+    @@list = Dir["#{File.dirname(__FILE__)}/providers/*.rb"].collect {|file| require(file); "Embedit::#{File.basename(file,'.rb').classify}".constantize }
     
     class << self
       def all

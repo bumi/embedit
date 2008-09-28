@@ -3,13 +3,11 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "JW player tests" do
    
   it "should show false on invalid path" do
-    a = create_media("aslkdh/asd/asdasda").valid?
-    a.should == false
+    create_media("aslkdh/asd/asdasda").should_not be_valid
   end
       
   it "should show false on invalid url" do
-    a = create_media("../test.flv").valid?
-    a.should == true
+    create_media("http://content.bitsontherun.com/videos/3ta6fhJQ.flv").should be_valid
   end
   
   private

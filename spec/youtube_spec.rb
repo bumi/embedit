@@ -3,8 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 describe "YouTube tests" do
   
   it "should show true on valid url" do
-    a = create_media("http://www.youtube.com/watch?v=j3TOT1lnVTA").valid?
-    a.should == true
+    create_media("http://www.youtube.com/watch?v=j3TOT1lnVTA").should be_valid
   end
   
   it "should have the title of 'Best robot dance ever'" do

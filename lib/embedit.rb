@@ -3,17 +3,14 @@ require 'json'
 require 'rexml/document'
 require 'net/http'
 require 'open-uri'
+require 'hpricot'
 require 'yaml'
 
 #Files
-require 'embedit/oembed/providers'
+require 'embedit/provider'
 require 'embedit/media'
-require 'embedit/oembed/oembed'
-require 'embedit/youtube/youtube'
-require 'embedit/ovi/ovi'
 require 'embedit/exceptions'
 require 'embedit/validate'
-require 'embedit/player/player'
 
 # Oembed
 

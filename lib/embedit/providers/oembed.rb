@@ -3,22 +3,20 @@ module Embedit
   class Oembed
     
     @@list = {
-      /flickr/ => { :name => "flickr", :api_url => "http://www.flickr.com/services/oembed" },
+      /flickr\.com\/photos\/(\S+)\/([0-9A-Za-z]+)/xi => { :name => "flickr", :api_url => "http://www.flickr.com/services/oembed" },
       /pownce/ => { :name => "pownce", :api_url => "http://api.pownce.com/2.1/oembed.{format}" },
       /revision3/ => { :name => "pownce", :api_url => "http://revision3.com/api/oembed/" },
-      /qik/ => { :name => "qik", :api_url => "http://qik.com/api/oembed.{format}" },
-      /viddler/ => { :name => "viddler", :api_url => "http://lab.viddler.com/services/oembed/" },
-      /vimeo/ => { :name => "vimeo", :api_url => "http://www.vimeo.com/api/oembed.{format}" }
+      /qik\.com\/video\/(\d+)/xi => { :name => "qik", :api_url => "http://qik.com/api/oembed.{format}" },
+      /viddler\.com(\/explore)?\/([^\/,\s]+)\/videos\/([^\/,\s]+)/xi => { :name => "viddler", :api_url => "http://lab.viddler.com/services/oembed/" },
+      /vimeo\.com\/(\d+)/xi => { :name => "vimeo", :api_url => "http://www.vimeo.com/api/oembed.{format}" }
     }
     
     attr_reader :title, :url, :format, :html
     
     def initialize(url)
-      #find provider
-      @@list.each do |regex, provider|
-        @provider = provider and break if url.match(regex)
-      end
       @input_url = url
+
+      get_provider_for(url)
       get_info
     end
 
@@ -35,14 +33,23 @@ module Embedit
     
     def self.match(url)
       @@list.keys.each do |regex|
-        return url.match(regex) if url =~ regex
+        m = url.match(regex)
+        return m if m
       end
+      nil # if none matches
     end
     
     private    
     
+    def get_provider_for(url)
+      @@list.each do |regex, provider|
+        @provider = provider and break if url.match(regex)
+      end
+      @provider
+    end
+    
     def get_info
-      base_url = prepare_url(@provider[:url])       #Prepare the base_url
+      base_url = prepare_url(@provider[:api_url])       #Prepare the base_url
       url = URI.parse(base_url + @input_url)
       api_data = Net::HTTP.get(url)                  #Get the data
       set_attributes(api_data)
