@@ -6,13 +6,12 @@ module Embedit
   
     def initialize(url)
       @url = url
+      @format = "video"
     end
     
     def html(options={})
-      options.reverse_merge!(:widht=>400, :height=>326)
-      %{
-        <embed id="VideoPlayback" src="http://video.google.com/googleplayer.swf?docid=#{doc_id}&hl=en&fs=true" style="width:#{options[:width]}px;height:#{options[:height]}px" allowFullScreen="true" allowScriptAccess="always" type="application/x-shockwave-flash"> </embed>
-      }
+      options.reverse_merge!(:width=>400, :height=>326)
+      %{<embed id="VideoPlayback" src="http://video.google.com/googleplayer.swf?docid=#{doc_id}&hl=en&fs=true" style="width:#{options[:width]}px;height:#{options[:height]}px" allowFullScreen="true" allowScriptAccess="always" type="application/x-shockwave-flash"> </embed>}
     end
     
     def doc_id

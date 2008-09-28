@@ -22,9 +22,7 @@ describe "Google Video" do
   
   it "should return correct embeded code" do
     embed = Embedit::Media.new("http://video.google.com/videoplay?docid=9190313294638554619&hl=en").html
-    embeded.should eql(%{
-      <embed id="VideoPlayback" src="http://video.google.com/googleplayer.swf?docid=9190313294638554619&hl=en&fs=true" style="width:400px;height:326px" allowFullScreen="true" allowScriptAccess="always" type="application/x-shockwave-flash"> </embed>
-    })
+    embed.should eql(%{<embed id="VideoPlayback" src="http://video.google.com/googleplayer.swf?docid=9190313294638554619&hl=en&fs=true" style="width:400px;height:326px" allowFullScreen="true" allowScriptAccess="always" type="application/x-shockwave-flash"> </embed>})
   end
   
 end

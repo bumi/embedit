@@ -67,23 +67,19 @@ end
 describe "Qik oEmbed tests" do
   
   it "should validate a valid Qik url" do
-    media = Embedit::Media.new('http://qik.com/video/239734').valid?
-    media.should == true
+    Embedit::Media.new('http://qik.com/video/239734').should be_valid
   end
   
   it "should show this videos title as 'heading to the digg tent at dnc'" do
-    media = Embedit::Media.new('http://qik.com/video/239734').title
-    media.should == 'heading to the digg tent at dnc'
+    Embedit::Media.new('http://qik.com/video/239734').title.should eql('heading to the digg tent at dnc')
   end
   
   it "should show the format as video" do
-    media = Embedit::Media.new('http://qik.com/video/239734').format
-    media.should == 'video'
+    Embedit::Media.new('http://qik.com/video/239734').format.should eql("video")
   end
   
   it "should validate an invalid Qik url" do
-    media = Embedit::Media.new('http://qik.com/video/2397342222132131').valid?
-    media.should == false
+    Embedit::Media.new('http://qik.com/video/2397342222132131').should_not be_valid
   end
     
 end
