@@ -32,6 +32,18 @@ At the moment Embedit supports:
   - Twitter (twictur.es)
 
 
+How to add a new provider:
+
+Every provider is a Class in the lib/embedit/providers folder. 
+(Note that you need to name it correctly (for example: class name: SevenloadVide - filename: sevenload_video.rb))
+Every provider should respond to: 
+	- html(options={})
+	- title 
+	- format
+	- url 
+and there should be a class method "match" that accepts the URL as parameter and returns a match object or nil. 
+
+
 Credits:
 
 Red Davis (http://redwriteshere.com/) (http://github.com/reddavis/embedit/tree/master)
