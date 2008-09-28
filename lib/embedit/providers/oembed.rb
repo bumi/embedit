@@ -8,7 +8,9 @@ module Embedit
       /revision3/ => { :name => "pownce", :api_url => "http://revision3.com/api/oembed/" },
       /qik\.com\/video\/(\d+)/xi => { :name => "qik", :api_url => "http://qik.com/api/oembed.{format}" },
       /viddler\.com(\/explore)?\/([^\/,\s]+)\/videos\/([^\/,\s]+)/xi => { :name => "viddler", :api_url => "http://lab.viddler.com/services/oembed/" },
-      /vimeo\.com\/(\d+)/xi => { :name => "vimeo", :api_url => "http://www.vimeo.com/api/oembed.{format}" }
+      /vimeo\.com\/(\d+)/xi => { :name => "vimeo", :api_url => "http://www.vimeo.com/api/oembed.{format}" },
+      /slideshare/ => {:name => "slideshare", :api_url => "http://oohembed.com/oohembed/"},
+      /amazon\.(com|co.uk|de|ca|jp)\/(.*)(gp\/product|o\/ASIN|obidos\/ASIN|dp)\/(.*)/ => {:name => "amazon", :api_url => "http://oohembed.com/oohembed/"}
     }
     
     attr_reader :title, :url, :format, :html

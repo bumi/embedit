@@ -127,7 +127,7 @@ describe "Revision3 oEmbed tests" do
   
 end
 
-
-
-
-
+describe "Amazon Product" do 
+  
+  
+end

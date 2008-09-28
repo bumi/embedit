@@ -30,6 +30,8 @@ At the moment Embedit supports:
   - Sevenload Video
   - .[jpg|gif|png] URL
   - Twitter (twictur.es)
+  - Amazon product (thanks to: oohembed.com)
+  - Slideshare (thanks to: oohembed.com)
 
 
 How to add a new provider:
