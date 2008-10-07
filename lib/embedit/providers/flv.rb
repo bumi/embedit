@@ -12,16 +12,10 @@ module Embedit
     def html(options = {})
       options[:width] ||= 400
       options[:height] ||= 300
-      options[:player] ||= "/public/swfobject.js"
+      options[:player] ||= "/public/flvplayer.swf"
+      options[:preview] ||= ""
       %{
-        <div class="embeded flv"></div>
-        <script type="text/javascript">
-          var s1 = new SWFObject("#{options[:player]}","player","#{options[:width]}","#{options[:height]}","9");
-          s1.addParam("allowfullscreen","true");
-          s1.addParam("allowscriptaccess","always");
-          s1.addParam("flashvars","file=#{@url}");
-          s1.write("preview");
-        </script>
+        <embed width="#{options[:width]}" height="#{options[:height]}" flashvars="file=#{@url}&amp;image=#{options[:preview]}&amp;width=#{options[:width]}&amp;height=#{options[:height]}" allowfullscreen="true" quality="high" name="single" style="" src="#{options[:player]}" type="application/x-shockwave-flash"/>
       } 
     end
     
