@@ -1,6 +1,6 @@
 module Embedit
   
-  class Image
+  class Mp3
     
     attr_reader :title, :url, :format
     
